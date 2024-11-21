@@ -18,7 +18,8 @@ export default function DashPost() {
     const fetchUser = async () => {
       try {
         const res = await fetch(`/api/user/getuser`, {
-          method: 'POST'
+          method: 'POST',
+          credentials: 'include'
         });
 
         const data = await res.json()
@@ -55,7 +56,8 @@ export default function DashPost() {
 
     try {
       const res = await fetch(`/api/user/getuser?startIndex=${startIndex}`, {
-        method: 'POST'
+        method: 'POST',
+        credentials: 'include'
       })
 
       const data = await res.json()
@@ -76,7 +78,8 @@ export default function DashPost() {
 
     try {
       const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        credentials: 'include'
       })
 
       const data = await res.json()

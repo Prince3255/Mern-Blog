@@ -24,6 +24,7 @@ export default function CommentSection({postId}) {
 
         const response = await fetch(`/api/comment/likecomment/${commentId}`, {
             method: 'PUT',
+            credentials: 'include'
         })
 
         const data = await response.json()
@@ -83,7 +84,8 @@ export default function CommentSection({postId}) {
                 content: comment,
                 postId,
                 userId: currentUser._id
-            })
+            }),
+            credentials: 'include'
         })
         const data = await res.json()
         
@@ -117,7 +119,8 @@ export default function CommentSection({postId}) {
         }
 
         const res = await fetch(`/api/comment/deletecomment/${commentId}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            credentials: 'include'
         })
 
         if (res.ok) {

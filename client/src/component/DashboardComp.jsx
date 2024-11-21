@@ -21,7 +21,8 @@ export default function DashboardComp() {
     const fetchUser = async () => {
         try {
             const response = await fetch('/api/user/getuser?limit=5', {
-                method: 'POST'
+                method: 'POST',
+                credentials: 'include'
             })
 
             const data = await response.json()
@@ -38,7 +39,8 @@ export default function DashboardComp() {
     const fetchComment = async () => {
         try {
             const response = await fetch('/api/comment/getcomment?limit=5', {
-                method: 'GET'
+                method: 'GET',
+                credentials: 'include'
             })
 
             const data = await response.json()

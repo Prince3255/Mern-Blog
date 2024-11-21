@@ -16,7 +16,8 @@ export default function DashComment() {
     const fetchComment = async () => {
       try {
         const res = await fetch(`/api/comment/getcomment`, {
-          method: 'GET'
+          method: 'GET',
+          credentials: 'include'
         });
 
         const data = await res.json()
@@ -53,7 +54,8 @@ export default function DashComment() {
 
     try {
       const res = await fetch(`/api/comment/getcomment?startIndex=${startIndex}`, {
-        method: 'GET'
+        method: 'GET',
+        credentials: 'include'
       })
 
       const data = await res.json()
@@ -74,7 +76,8 @@ export default function DashComment() {
 
     try {
       const res = await fetch(`/api/comment/deletecomment/${commentIdToDelete}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        credentials: 'include'
       })
 
       const data = await res.json()

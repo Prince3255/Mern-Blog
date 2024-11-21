@@ -47,7 +47,8 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
             },
             body: JSON.stringify({
                 content: newComment
-            })   
+            }),
+            credentials: 'include'
         })
 
         const data = await res.json()
