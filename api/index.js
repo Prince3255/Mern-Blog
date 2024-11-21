@@ -10,12 +10,15 @@ import { uploadFile } from './util/cloudinary.js' // Import your upload function
 import { upload } from './middleware/multer.middleware.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import path from 'path'
 
 dotenv.config()
 
 mongoose.connect(process.env.MONGO)
 .then(() => console.log('DB Connected'))
 .catch(err => console.error('Error connecting to DB:', err))
+
+const __dirname = path.resolve()
 
 const app = express()
 
@@ -45,6 +48,11 @@ app.post('/api/upload', upload.single('imageFile'), uploadFile)
 app.use('/api/post', postRoute)
 app.use('/api/comment', commentRoute)
 
+app.use(express.static(path.join(__dirname, '/client/dist')))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
+})
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500
